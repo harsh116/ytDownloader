@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.App {
+  font-family: "Poppins", sans-serif;
+
+  /* display: flex;
+  align-items: center;
+  justify-content: center;*/
+}
+
+/*@media screen and (max-width: 550px) {
+  html,
+  body,
+  #root,
+  .App {
+    height: fit-content;
+  }
+}*/
+
+.OR {
+  margin: 3rem;
+  text-align: center;
+}
+
+.labelIndividualVideos {
+  text-align: center;
+}
+
+.center {
+  width: fit-content;
+  margin: auto;
+}
+
+.mgtop {
+  margin-top: 1rem;
+}

@@ -1,0 +1,15 @@
+:root {
+  --deeppinkLight: rgb(255, 0, 125);
+  --deeppink: rgb(255, 0, 104);
+  --deeppinkDark: rgb(230, 0, 94);
+}
+
+.Format {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+}
+
+.Format select {
+  border: 1px solid var(--deeppink);
+}

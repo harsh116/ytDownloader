@@ -1,0 +1,24 @@
+:root {
+  --deeppink: rgb(255, 0, 104);
+  --deeppinkDark: rgb(230, 0, 94);
+}
+
+.Download {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.Download button {
+  background-color: var(--deeppink);
+  border: none;
+  transition: all 0.2s ease-in-out;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.Download button:hover {
+  background-color: var(--deeppinkDark);
+}

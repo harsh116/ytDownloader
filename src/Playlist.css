@@ -1,0 +1,58 @@
+:root {
+  --deeppinkLight: rgb(255, 0, 125);
+  --deeppink: rgb(255, 0, 104);
+  --deeppinkDark: rgb(230, 0, 94);
+}
+
+.Playlist {
+  margin-top: 5rem;
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.Playlist .playlistInput {
+  width: 50%;
+  min-width: 300px;
+  border: 4px solid var(--deeppink);
+  border-radius: 3px;
+  overflow: hidden;
+  /* padding: 0.5rem; */
+}
+
+.playlistInput input {
+  width: 80%;
+  /* height: 100%; */
+  height: 2rem;
+  border: none;
+  outline: none;
+  padding: 0;
+  padding-left: 0.5rem;
+  box-sizing: border-box;
+}
+
+.playlistInput button {
+  width: 20%;
+  height: 3rem;
+  background-color: var(--deeppink);
+  color: white;
+  border: none;
+  /* box-sizing: border-box; */
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.playlistInput button.disabled {
+  background-color: var(--deeppinkLight);
+  /* background-color: black; */
+  cursor: default;
+}
+
+.playlistInput button:hover {
+  background-color: var(--deeppinkDark);
+}
+
+.playlistInput button.disabled:hover {
+  background-color: var(--deeppinkLight);
+}
