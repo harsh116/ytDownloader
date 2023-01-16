@@ -1,8 +1,19 @@
 import { useState } from "react";
 import "./Playlist.css";
-import { HOST } from "./constants";
+import { HOST, TIMEOUT } from "./constants";
+import axios from "axios";
 
 const Playlist = (props) => {
+  const axiosInstance = axios.create({
+    baseURL: HOST,
+    timeout: TIMEOUT,
+    headers: {
+      Accept: "application/json",
+      "content-type": "application/json",
+      //'Authorization': 'token <your-token-here> -- https://docs.GitHub.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token'
+    },
+  });
+
   const {
     quality,
     type,
@@ -11,7 +22,7 @@ const Playlist = (props) => {
     setDownloadLinks,
     setPlaylistName,
     setPlaylistLength,
-    setIsResultVisible
+    setIsResultVisible,
   } = props;
 
   const [input, setInput] = useState("");
@@ -30,48 +41,55 @@ const Playlist = (props) => {
     }
 
     setIsLoading(true);
-    setIsResultVisible(false)
+    setIsResultVisible(false);
     setIsDownloadLinkAvailable(false);
-    fetch(`${HOST}/getList`, {
-      method: "post",
-      mode: "cors",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        playlistURL: input1,
-        quality,
-        type,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setIsResultVisible(true)
-        console.log(data);
-        setIsLoading(false);
-        const { videoList, playListName, audioList } = data?.[0];
-        if (videoList) {
-          setDownloadLinks(videoList);
-          setPlaylistLength(videoList.length);
-          setPlaylistName(playListName);
-          setIsDownloadLinkAvailable(true);
-        } else if (audioList) {
-          setDownloadLinks(audioList);
-          setPlaylistLength(audioList.length);
-          setPlaylistName(playListName);
-          setIsDownloadLinkAvailable(true);
 
-        }
+    axiosInstance
+      .post("/getList", { playlistURL: input1, quality, type })
+      .then((response) => {
+        console.log(response);
       })
-      .catch((err) => {
-        setDownloadLinks([]);
-        setPlaylistName("");
-        setPlaylistLength(0);
-        console.log(err);
-        setIsResultVisible(false)
-        setIsLoading(false);
-        alert("some error");
-      });
+      .catch((err) => console.log);
+
+    // fetch(`${HOST}/getList`, {
+    //   method: "post",
+    //   mode: "cors",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     playlistURL: input1,
+    //     quality,
+    //     type,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setIsResultVisible(true);
+    //     console.log(data);
+    //     setIsLoading(false);
+    //     const { videoList, playListName, audioList } = data?.[0];
+    //     if (videoList) {
+    //       setDownloadLinks(videoList);
+    //       setPlaylistLength(videoList.length);
+    //       setPlaylistName(playListName);
+    //       setIsDownloadLinkAvailable(true);
+    //     } else if (audioList) {
+    //       setDownloadLinks(audioList);
+    //       setPlaylistLength(audioList.length);
+    //       setPlaylistName(playListName);
+    //       setIsDownloadLinkAvailable(true);
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     setDownloadLinks([]);
+    //     setPlaylistName("");
+    //     setPlaylistLength(0);
+    //     console.log(err);
+    //     setIsResultVisible(false);
+    //     setIsLoading(false);
+    //     alert("some error");
+    //   });
   };
 
   const isInputDisabled = () => {
