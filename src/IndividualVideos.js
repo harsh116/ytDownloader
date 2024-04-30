@@ -18,15 +18,15 @@ const IndividualVideos = (props) => {
   const generateLink = () => {
     const regex = /http[s]?[:]\/\/www\.youtube\.com\/watch[?]v[=].+/;
     const regexM = /http[s]?[:]\/\/m\.youtube\.com\/watch[?]v[=].+/;
-    if (!regex.test(input)) {
+    if (!regex.test(input) && !regexM.test(input)) {
       alert("Invalid video link");
       return;
     }
 
-    if (!regex.test(input) && !regexM.test(input)) {
-      alert("Invalid playlist link");
-      return;
-    }
+    // if (!regex.test(input) && !regexM.test(input)) {
+    //   alert("Invalid playlist link");
+    //   return;
+    // }
 
     let input1 = input;
     if (regexM.test(input)) {

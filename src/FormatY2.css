@@ -1,0 +1,21 @@
+:root {
+  --deeppinkLight: rgb(255, 0, 125);
+  --deeppink: rgb(255, 0, 104);
+  --deeppinkDark: rgb(230, 0, 94);
+}
+
+.FormatY2 {
+/*  position: absolute;
+  top: 0;
+  right: 1rem;*/
+  width: fit-content;
+  margin-left: auto;
+
+  
+}
+
+.FormatY2 select {
+	
+  border: 1px solid var(--deeppink);
+
+}

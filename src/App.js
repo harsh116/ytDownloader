@@ -5,13 +5,17 @@ import IndividualVideos from "./IndividualVideos";
 import Spinner from "./Spinner";
 import Download from "./Download";
 import Format from "./Format";
+import FormatY2 from "./FormatY2";
+import Header from './Header'
+
 import Result from "./Result";
 
 function App() {
   const [isDownloadLinkAvailable, setIsDownloadLinkAvailable] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [quality, setQuality] = useState("480");
+  const [quality, setQuality] = useState("360"); // ['360','720','128','128y','144y','240y','360y','480y','720y','1080y']
   const [type, setType] = useState("video"); // ['audio','video']
+  const [side,setSide]=useState('left'); //['left','right']
 
   const [downloadLinks, setDownloadLinks] = useState([]);
   const [playlistName, setPlaylistName] = useState(""); // ['audios','videos','<actualName>']
@@ -20,7 +24,9 @@ function App() {
 
   return (
     <div className="App">
-      <Format setQuality={setQuality} setType={setType} />
+      <Header side={side} setQuality={setQuality} setType={setType} setSide={setSide}/>
+     {/* <Format setQuality={setQuality} setType={setType} setSide={setSide}/>
+      <FormatY2 setQuality={setQuality} setType={setType} setSide={setSide}/>*/}
       <Playlist
         quality={quality}
         type={type}

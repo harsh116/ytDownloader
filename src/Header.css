@@ -1,0 +1,47 @@
+/*:root {
+  --deeppinkLight: rgb(255, 0, 125);
+  --deeppink: rgb(255, 0, 104);
+  --deeppinkDark: rgb(230, 0, 94);
+}*/
+
+
+:root {
+  /*--deeppinkDarky2: rgb(255, 0, 125,0.8);*/
+  --deeppinkDarky2: rgb(255, 0, 104,0.8);
+  /*--deeppinkLighty2: rgb(255, 0, 146,0.3);*/
+  --deeppinkLighty2: rgb(255, 0,104 ,0.3);
+  
+}
+
+.Header{
+	display: flex;
+	width: 100%;
+	justify-content: space-between;	
+	flex-direction: row;
+}
+
+.left,.right{
+	flex-basis: 50%;
+	/*background-color: var(--deeppinkLighty2);*/
+	/*border: 1px sol;*/
+	height: 3rem;
+
+}
+
+.left.active,.right.active{
+	border: 1px solid deeppink;
+	border-top: none;
+}
+
+/*@media only screen and ( max-width: 500px)
+{
+	.Header{
+		flex-direction: column;
+	}
+
+	.left.right{
+		height: auto;
+	}
+
+	
+}*/
